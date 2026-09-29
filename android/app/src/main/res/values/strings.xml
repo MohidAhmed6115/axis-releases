@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Axis</string>
+    <string name="title_activity_main">Axis</string>
+    <string name="package_name">com.axis.app</string>
+    <string name="custom_url_scheme">com.axis.app</string>
+    <string name="widget_daily_name">Daily Color Log</string>
+    <string name="widget_daily_desc">Quickly rate and log your day with Axis color ratings.</string>
+    <string name="widget_salah_name">Salah Tracker</string>
+    <string name="widget_salah_desc">Track and log your 5 daily prayers directly from your home screen.</string>
+    <string name="widget_habits_name">Today\'s Habits</string>
+    <string name="widget_habits_desc">Interactive checklist of your active habits for today.</string>
+</resources>
