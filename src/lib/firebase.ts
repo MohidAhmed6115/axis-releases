@@ -33,31 +33,29 @@ import {
 setLogLevel('error');
 
 // Support reading configuration from environment variables (e.g. VITE_FIREBASE_API_KEY)
-// with graceful fallback for local/preview dev environments
+// with accurate fallback to the active Firebase project
 const firebaseConfig = {
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || 'ai-studio-a40bab5b-897c-468d-a352-369a7b44d7a1',
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || '1:43904830812:web:axis',
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || 'AIzaSyDummyKeyForDevelopmentEnvironment',
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'ai-studio-a40bab5b-897c-468d-a352-369a7b44d7a1.firebaseapp.com',
-  firestoreDatabaseId: import.meta.env.VITE_FIREBASE_DATABASE_ID || '',
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || '',
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '',
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || 'plexiform-acronym-541j7',
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || '1:343196558361:web:41e015c69ae765c95cb688',
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || 'AIzaSyD9Qm9bPyNabWmYl0oJvc5TXtVSKdPYdxM',
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'plexiform-acronym-541j7.firebaseapp.com',
+  firestoreDatabaseId: import.meta.env.VITE_FIREBASE_DATABASE_ID || 'ai-studio-a40bab5b-897c-468d-a352-369a7b44d7a1',
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || 'plexiform-acronym-541j7.firebasestorage.app',
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '343196558361',
 };
 
 // Initialize Firebase App
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 export const auth = getAuth(app);
 
-// In Google Cloud Firestore, the primary instance is named '(default)'.
-// If firestoreDatabaseId is an applet ID placeholder, '(default)', or empty,
-// connect to standard default Firestore via initializeFirestore with long polling enabled.
+// In Google Cloud Firestore, if a custom database ID is configured, connect to it.
+// Default instance '(default)' is only used if firestoreDatabaseId is unset or literally 'default'/'(default)'.
 function resolveFirestoreDb() {
   const customDbId = firebaseConfig.firestoreDatabaseId;
   const isDefaultInstance = 
     !customDbId || 
     customDbId === '(default)' || 
-    customDbId === 'default' || 
-    customDbId.startsWith('ai-studio-');
+    customDbId === 'default';
 
   const firestoreSettings = {
     experimentalForceLongPolling: true,
