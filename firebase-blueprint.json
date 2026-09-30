@@ -1,0 +1,173 @@
+{
+  "entities": {
+    "users": {
+      "fields": {
+        "email": {
+          "type": "string",
+          "description": "User email address"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Account creation timestamp ISO"
+        }
+      }
+    },
+    "habits": {
+      "path": "users/{userId}/habits/{habitId}",
+      "fields": {
+        "id": {
+          "type": "string",
+          "description": "Unique habit ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Habit title"
+        },
+        "type": {
+          "type": "string",
+          "description": "build or break"
+        },
+        "frequency": {
+          "type": "string",
+          "description": "daily, weekdays, weekends, weekly"
+        },
+        "isAnchor": {
+          "type": "boolean",
+          "description": "Whether habit is an anchor habit"
+        },
+        "category": {
+          "type": "string",
+          "description": "Category name"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp"
+        }
+      }
+    },
+    "tasks": {
+      "path": "users/{userId}/tasks/{taskId}",
+      "fields": {
+        "id": {
+          "type": "string",
+          "description": "Unique task ID"
+        },
+        "title": {
+          "type": "string",
+          "description": "Task title"
+        },
+        "priority": {
+          "type": "string",
+          "description": "low, medium, high, urgent"
+        },
+        "dueDate": {
+          "type": "string",
+          "description": "YYYY-MM-DD"
+        },
+        "completed": {
+          "type": "boolean",
+          "description": "Whether completed"
+        },
+        "order": {
+          "type": "number",
+          "description": "Sort order"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp"
+        }
+      }
+    },
+    "days": {
+      "path": "users/{userId}/days/{date}",
+      "fields": {
+        "date": {
+          "type": "string",
+          "description": "Date string YYYY-MM-DD"
+        },
+        "color": {
+          "type": "string",
+          "description": "Day color: red, yellow, orange, green, gold"
+        },
+        "note": {
+          "type": "string",
+          "description": "Required daily reflection note"
+        },
+        "completedHabitIds": {
+          "type": "array",
+          "description": "List of completed habit IDs for this day"
+        },
+        "completedTaskIds": {
+          "type": "array",
+          "description": "List of completed task IDs for this day"
+        },
+        "reviewedAt": {
+          "type": "string",
+          "description": "ISO timestamp"
+        }
+      }
+    },
+    "calendar_events": {
+      "path": "users/{userId}/calendar_events/{eventId}",
+      "fields": {
+        "id": {
+          "type": "string",
+          "description": "Unique event ID"
+        },
+        "title": {
+          "type": "string",
+          "description": "Event title"
+        },
+        "startTime": {
+          "type": "string",
+          "description": "Start ISO timestamp"
+        },
+        "endTime": {
+          "type": "string",
+          "description": "End ISO timestamp"
+        },
+        "source": {
+          "type": "string",
+          "description": "manual or google"
+        }
+      }
+    },
+    "salah": {
+      "path": "users/{userId}/salah/{date}",
+      "fields": {
+        "date": {
+          "type": "string",
+          "description": "Date string YYYY-MM-DD"
+        },
+        "fajr": {
+          "type": "string",
+          "description": "none, solo, or bajamat"
+        },
+        "zuhr": {
+          "type": "string",
+          "description": "none, solo, or bajamat"
+        },
+        "asr": {
+          "type": "string",
+          "description": "none, solo, or bajamat"
+        },
+        "maghrib": {
+          "type": "string",
+          "description": "none, solo, or bajamat"
+        },
+        "isha": {
+          "type": "string",
+          "description": "none, solo, or bajamat"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last update"
+        }
+      }
+    }
+  }
+}

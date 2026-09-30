@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Day Evaluation Colors (Single source of truth) -->
+    <color name="color_red">#ef4444</color>
+    <color name="color_orange">#f97316</color>
+    <color name="color_yellow">#facc15</color>
+    <color name="color_green">#22c55e</color>
+    <color name="color_gold">#ca8a04</color>
+
+    <!-- Salah Status Colors: Never reuse day rating colors -->
+    <color name="salah_solo">#7d7a96</color>
+    <color name="salah_bajamat">#8b7bff</color>
+
+    <!-- Theme Neutral Tokens (Light Mode Default) -->
+    <color name="widget_background">#ffffff</color>
+    <color name="widget_surface">#f8f7fd</color>
+    <color name="widget_surface_subtle">#f1eff9</color>
+    <color name="widget_border">#e7e4f4</color>
+    <color name="widget_text_primary">#18172b</color>
+    <color name="widget_text_secondary">#7d7a96</color>
+    <color name="widget_accent">#7c5ef0</color>
+    <color name="widget_dimmed_circle">#e4e1f0</color>
+    <color name="widget_dimmed_border">#d0cce3</color>
+    <color name="widget_divider">#eae8f5</color>
+</resources>

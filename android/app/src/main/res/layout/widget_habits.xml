@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_habits_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_bg"
+    android:padding="10dp">
+
+    <!-- Header bar with title and progress -->
+    <LinearLayout
+        android:id="@+id/widget_habits_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@drawable/ic_widget_compass"
+            android:contentDescription="Habits" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:text="TODAY'S HABITS"
+            android:textSize="10sp"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="bold"
+            android:textColor="@color/widget_text_secondary"
+            android:textAllCaps="true"
+            android:letterSpacing="0.05" />
+
+        <TextView
+            android:id="@+id/tv_habits_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 of 0 done"
+            android:textSize="10sp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/widget_accent" />
+    </LinearLayout>
+
+    <!-- Scrollable Habits List -->
+    <ListView
+        android:id="@+id/habits_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@color/widget_divider"
+        android:dividerHeight="1dp"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false" />
+
+    <!-- Empty view when no active habits -->
+    <TextView
+        android:id="@+id/habits_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="No habits scheduled for today"
+        android:textSize="11sp"
+        android:textColor="@color/widget_text_secondary"
+        android:fontFamily="sans-serif"
+        android:visibility="gone" />
+</LinearLayout>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_salah_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_bg"
+    android:padding="10dp">
+
+    <!-- Header bar -->
+    <LinearLayout
+        android:id="@+id/widget_salah_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="6dp">
+
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@drawable/ic_widget_compass"
+            android:contentDescription="Salah" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:text="SALAH TRACKER"
+            android:textSize="10sp"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="bold"
+            android:textColor="@color/widget_text_secondary"
+            android:textAllCaps="true"
+            android:letterSpacing="0.05" />
+
+        <TextView
+            android:id="@+id/tv_salah_summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0/5 Done"
+            android:textSize="10sp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/widget_accent" />
+    </LinearLayout>
+
+    <!-- Prayers List (5 Compact Rows) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <!-- Fajr Row -->
+        <LinearLayout
+            android:id="@+id/row_fajr"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_name_fajr"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Fajr"
+                android:textSize="11sp"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/widget_text_primary" />
+
+            <ImageButton
+                android:id="@+id/btn_fajr_solo"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:background="@drawable/widget_salah_btn_unselected"
+                android:src="@drawable/ic_widget_solo"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:contentDescription="Fajr Solo" />
+
+            <ImageButton
+                android:id="@+id/btn_fajr_bajamat"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/widget_salah_btn_unselected"
+                android:src="@drawable/ic_widget_bajamat"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:contentDescription="Fajr Bajamat" />
+        </LinearLayout>
+
+        <!-- Zuhr Row -->
+        <LinearLayout
+            android:id="@+id/row_zuhr"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_name_zuhr"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Zuhr"
+                android:textSize="11sp"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/widget_text_primary" />
+
+            <ImageButton
+                android:id="@+id/btn_zuhr_solo"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:background="@drawable/widget_salah_btn_unselected"
+                android:src="@drawable/ic_widget_solo"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:contentDescription="Zuhr Solo" />
+
+            <ImageButton
+                android:id="@+id/btn_zuhr_bajamat"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/widget_salah_btn_unselected"
+                android:src="@drawable/ic_widget_bajamat"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:contentDescription="Zuhr Bajamat" />
+        </LinearLayout>
+
+        <!-- Asr Row -->
+        <LinearLayout
+            android:id="@+id/row_asr"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_name_asr"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Asr"
+                android:textSize="11sp"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/widget_text_primary" />
+
+            <ImageButton
+                android:id="@+id/btn_asr_solo"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:background="@drawable/widget_salah_btn_unselected"
+                android:src="@drawable/ic_widget_solo"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:contentDescription="Asr Solo" />
+
+            <ImageButton
+                android:id="@+id/btn_asr_bajamat"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/widget_salah_btn_unselected"
+                android:src="@drawable/ic_widget_bajamat"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:contentDescription="Asr Bajamat" />
+        </LinearLayout>
+
+        <!-- Maghrib Row -->
+        <LinearLayout
+            android:id="@+id/row_maghrib"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_name_maghrib"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Maghrib"
+                android:textSize="11sp"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/widget_text_primary" />
+
+            <ImageButton
+                android:id="@+id/btn_maghrib_solo"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:background="@drawable/widget_salah_btn_unselected"
+                android:src="@drawable/ic_widget_solo"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:contentDescription="Maghrib Solo" />
+
+            <ImageButton
+                android:id="@+id/btn_maghrib_bajamat"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/widget_salah_btn_unselected"
+                android:src="@drawable/ic_widget_bajamat"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:contentDescription="Maghrib Bajamat" />
+        </LinearLayout>
+
+        <!-- Isha Row -->
+        <LinearLayout
+            android:id="@+id/row_isha"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_name_isha"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Isha"
+                android:textSize="11sp"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/widget_text_primary" />
+
+            <ImageButton
+                android:id="@+id/btn_isha_solo"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:background="@drawable/widget_salah_btn_unselected"
+                android:src="@drawable/ic_widget_solo"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:contentDescription="Isha Solo" />
+
+            <ImageButton
+                android:id="@+id/btn_isha_bajamat"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/widget_salah_btn_unselected"
+                android:src="@drawable/ic_widget_bajamat"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:contentDescription="Isha Bajamat" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
