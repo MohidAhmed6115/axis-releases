@@ -29,11 +29,22 @@ export const AxisLogo: React.FC<AxisLogoProps> = ({
     );
   }
 
+  const isFileProtocol = typeof window !== 'undefined' && window.location.protocol === 'file:';
+  const logoSrc = isFileProtocol ? './axis_logo.png' : '/axis_logo.png';
+
   return (
     <img 
-      src="/axis_logo.png" 
+      src={logoSrc} 
       alt={alt}
-      onError={() => setImgError(true)}
+      onError={(e) => {
+        // If /axis_logo.png failed, attempt relative ./axis_logo.png before final fallback
+        const target = e.currentTarget;
+        if (target.src && !target.src.includes('./axis_logo.png')) {
+          target.src = './axis_logo.png';
+        } else {
+          setImgError(true);
+        }
+      }}
       className={`shrink-0 object-contain rounded-md select-none ${className}`}
       style={size ? { width: size, height: size } : undefined}
     />

@@ -18,6 +18,7 @@ import { SalahReminderToast } from './components/SalahReminderToast';
 import { ContributeModal } from './components/ContributeModal';
 import { ReleaseNotesModal } from './components/ReleaseNotesModal';
 import { SWIPE_SENSITIVITY_THRESHOLDS } from './types';
+import { isAndroidCapacitor } from './services/usageStatsService';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const PAGE_ORDER: NavPage[] = [
@@ -52,8 +53,9 @@ export default function App() {
   // Swipe Navigation HUD Feedback
   const [swipeNavIndicator, setSwipeNavIndicator] = useState<{ direction: 'prev' | 'next'; label: string } | null>(null);
 
-  // Deep link listener for native widget taps
+  // Deep link listener for native widget taps (Android only)
   useEffect(() => {
+    if (!isAndroidCapacitor()) return;
     import('@capacitor/app').then(({ App: CapApp }) => {
       const handle = CapApp.addListener('appUrlOpen', (event) => {
         try {

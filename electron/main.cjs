@@ -1,7 +1,21 @@
-const { app, BrowserWindow, ipcMain, shell } = require('electron');
+const { app, BrowserWindow, ipcMain, shell, protocol, net } = require('electron');
 const path = require('path');
 const http = require('http');
 const url = require('url');
+
+// Register custom privileged scheme before app ready
+protocol.registerSchemesAsPrivileged([
+  {
+    scheme: 'app',
+    privileges: {
+      standard: true,
+      secure: true,
+      supportFetchAPI: true,
+      corsEnabled: true,
+      stream: true,
+    },
+  },
+]);
 
 let mainWindow = null;
 let loopbackServer = null;
@@ -14,11 +28,14 @@ function createWindow() {
     minHeight: 600,
     title: 'Axis - Accountability & Daily Productivity',
     backgroundColor: '#0b0f14',
+    icon: path.join(__dirname, '../public/axis_logo.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
       nodeIntegration: false,
       contextIsolation: true,
       sandbox: false,
+      webSecurity: false,
+      allowRunningInsecureContent: false,
     },
   });
 
@@ -28,6 +45,18 @@ function createWindow() {
       shell.openExternal(url);
     }
     return { action: 'deny' };
+  });
+
+  // Toggle DevTools on F12 or Ctrl+Shift+I
+  mainWindow.webContents.on('before-input-event', (event, input) => {
+    if (input.key === 'F12' || (input.control && input.shift && input.key.toLowerCase() === 'i')) {
+      mainWindow.webContents.toggleDevTools();
+    }
+  });
+
+  // Catch any load failures
+  mainWindow.webContents.on('did-fail-load', (event, errorCode, errorDescription, validatedURL) => {
+    console.error('Failed to load:', validatedURL, errorCode, errorDescription);
   });
 
   // Load production dist or local dev server
@@ -149,6 +178,21 @@ ipcMain.handle('start-google-oauth', async (event, authUrl) => {
 });
 
 app.whenReady().then(() => {
+  // Protocol handler for app:// scheme
+  try {
+    protocol.handle('app', (request) => {
+      const parsed = new URL(request.url);
+      let pathname = decodeURIComponent(parsed.pathname);
+      if (pathname === '/' || !pathname) {
+        pathname = '/index.html';
+      }
+      const filePath = path.join(__dirname, '../dist', pathname);
+      return net.fetch(url.pathToFileURL(filePath).toString());
+    });
+  } catch (err) {
+    console.error('Failed registering app protocol handler:', err);
+  }
+
   createWindow();
 
   app.on('activate', () => {
