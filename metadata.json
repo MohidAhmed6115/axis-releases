@@ -1,6 +1,0 @@
-{
-  "name": "Axis - Accountability & Daily Productivity",
-  "description": "Cross-platform personal productivity and self-accountability app with habit tracking, daily color review, to-do list, calendar integration, and screen-time insights.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
